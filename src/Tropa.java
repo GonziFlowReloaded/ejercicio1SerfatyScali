@@ -32,7 +32,7 @@ public class Tropa {
     public void atacar(Tropa enemigo, Escudo escudo) {
         if(this.verificarVida() == true && enemigo.verificarVida() == true){
             if (escudo != null) {
-                vidaQuitada = escudo.defenseT0(this.getDaño());
+                vidaQuitada = escudo.defensaXdano(this.getDaño());
                 enemigo.setVida(enemigo.getVida() - vidaQuitada);
             }
             else {

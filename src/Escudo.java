@@ -1,4 +1,3 @@
-package wargame;
 
 public class Escudo {
 
