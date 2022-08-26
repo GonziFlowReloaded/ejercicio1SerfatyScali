@@ -17,6 +17,7 @@ public class TropaTest {
         Tropa tanque1 = new Tropa("tanque1", 1, 2.0f);
         Tropa soldado1 = new Tropa("soldado1", 1, 1.0f);
         Escudo escudo = new Escudo();
+        //A este testeo le falta asignarle tier al objeto escudo
         tanque1.atacar(soldado1, escudo);
         assertEquals(0.50f, soldado1.getVida(), 0.0f);
         tanque1.atacar(soldado1, escudo);
