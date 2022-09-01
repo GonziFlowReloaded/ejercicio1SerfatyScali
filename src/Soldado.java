@@ -1,18 +1,30 @@
 public class Soldado extends Tropa {
     private Cuchillo cutuCuchillo;
-    public Soldado(String nombre, Float daño, Float vida, Cuchillo arma) {
+    private Ametralladora boomStick;
+    public Soldado(String nombre, Float daño, Float vida, Cuchillo armaMelee, Ametralladora armaRango) {
         super(nombre, daño, vida);
-        this.setArma(arma);
+        this.setArmaMelee(armaMelee);
+        this.setArmaRango(armaRango);
         
     }
-    public Cuchillo getArma() {
+    public Cuchillo getArmaMelee() {
         return cutuCuchillo;
     }
-    public void setArma(Cuchillo arma) {
+    public void setArmaMelee(Cuchillo arma) {
         this.cutuCuchillo = arma;
     }
-    public float danioConArma(){
-        return this.getArma().getDanio() * this.getDaño();
+    public Ametralladora getArmaRango() {
+        return boomStick;
     }
-    
+    public void setArmaRango(Ametralladora arma) {
+        this.boomStick = arma;
+    }
+    public float danioMelee(){
+        return this.getArmaMelee().getDanio() * this.getDaño();
+    }
+    public float danioDistancia(){
+        this.getArmaRango().setMunicion(this.getArmaRango().getMunicion() - 1);
+        return this.getArmaRango().getDanio() * this.getDaño();
+    }
+
 }
