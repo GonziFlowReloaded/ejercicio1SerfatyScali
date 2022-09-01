@@ -1,6 +1,6 @@
 public class Cuchillo extends ArmaBase {
     public Cuchillo() {
-        super("Cuchillo", 10.0f);
+        super("Cuchillo", 0.5f);
     }
 }
     
