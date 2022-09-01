@@ -1,6 +1,6 @@
 public abstract class Veiculos extends Tropa {
 
-    public Veiculos(String nombre, int daño, Float vida) {
+    public Veiculos(String nombre, Float daño, Float vida) {
         super(nombre, daño, vida);
     }
     
