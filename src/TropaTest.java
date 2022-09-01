@@ -17,11 +17,12 @@ public class TropaTest {
         Tropa tanque1 = new Tropa("tanque1", 1, 2.0f);
         Tropa soldado1 = new Tropa("soldado1", 1, 1.0f);
         Escudo escudo = new Escudo();
+        escudo.setDefensa1();
         //A este testeo le falta asignarle tier al objeto escudo
         tanque1.atacar(soldado1, escudo);
-        assertEquals(0.50f, soldado1.getVida(), 0.0f);
+        assertEquals(0.25f, soldado1.getVida(), 0.00f);
         tanque1.atacar(soldado1, escudo);
-        assertEquals(0.0f, soldado1.getVida(), 0.0f);
+        assertEquals(0.0f, Math.round(soldado1.getVida()*100)/100, 0.0f);
     }
 
     @Test 
