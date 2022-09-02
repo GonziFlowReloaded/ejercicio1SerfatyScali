@@ -15,6 +15,6 @@ public class Tanque extends Veiculos{
     @Override
     public String imprimir(){
         
-        return "[Tanque]" + super.imprimir() + this.getConductor().imprimir();
+        return "[Tanque]" + super.imprimir() + "[Conductor]:" +this.getConductor().imprimir();
     }
 }

@@ -19,7 +19,7 @@ public class TropaTest {
         System.out.println("");
         impresor.printearTexto(soldado.imprimir());
 
-        assertEquals("[Soldado] Nombre: Stan Vida: 100.0 Daño 1.5 ", soldado.imprimir());
+        assertEquals("[Soldado] Nombre: Stan Vida: 100.0 Daño: 1.5 ", soldado.imprimir());
         
 
     }
