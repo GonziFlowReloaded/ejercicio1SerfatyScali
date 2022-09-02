@@ -63,6 +63,6 @@ public class Tropa {
     
     public String imprimir(){
 
-        return this.getNombre()+this.getVida()+this.getDaño();
+        return " Nombre: "+this.getNombre()+" Vida: "+this.getVida()+" Daño: "+this.getDaño()+" ";
     }
 }
