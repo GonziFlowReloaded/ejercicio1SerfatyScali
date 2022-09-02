@@ -59,5 +59,9 @@ public class Tropa {
             return true;
         }
     }
+
     
+    public String imprimir(){
+        return this.getNombre()+this.getVida()+this.getDaño();
+    }
 }
