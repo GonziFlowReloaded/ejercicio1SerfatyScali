@@ -14,6 +14,6 @@ public class Buque extends Veiculos {
     
     @Override
     public String imprimir(){
-        return "[Buque]" + super.imprimir() + this.getConductor().imprimir();
+        return "[Buque]" + super.imprimir() +"[Conductor]:" +this.getConductor().imprimir();
     }
 }
