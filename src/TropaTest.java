@@ -24,5 +24,22 @@ public class TropaTest {
         
 
     }
+
+    @Test
+    void debe_crear_un_buque(){
+        Imprimeinador impresor = new Imprimeinador();
+        Cuchillo armaMelee = new Cuchillo();
+
+        Ametralladora armaRango = new Ametralladora("AK-47", 1.25f, 3);
+        Soldado soldado = new Soldado("Stan", 1.5f, 100f, armaMelee, armaRango);
+        
+        Buque buque = new Buque("Buque", 1.5f, 100f, soldado);
+
+        impresor.printearTexto(buque.imprimir());
+
+        assertEquals("[Buque] Nombre: Buque Vida: 100.0 Daño: 1.5 [Soldado] Nombre: Stan Vida: 100.0 Daño: 1.5 ", buque.imprimir());
+    
+    }
+
 }
     
