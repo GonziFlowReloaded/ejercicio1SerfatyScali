@@ -4,4 +4,8 @@ public abstract class Veiculos extends Tropa {
         super(nombre, daño, vida);
     }
     
+    @Override
+    public String imprimir(){
+        return super.imprimir();
+    }
 }

@@ -27,4 +27,8 @@ public class Soldado extends Tropa {
         return this.getArmaRango().getDanio() * this.getDaño();
     }
 
+    @Override
+    public String imprimir() {
+        return "[Soldado]" + super.imprimir();
+    }
 }

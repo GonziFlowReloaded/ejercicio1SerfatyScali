@@ -60,4 +60,7 @@ public class Tropa {
         }
     }
     
+    public String imprimir(){
+        return this.getNombre() + this.getVida() + this.getDaño();
+    }
 }
