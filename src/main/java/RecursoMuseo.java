@@ -1,18 +1,16 @@
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 
 public class RecursoMuseo {
-    private Date fecha;
-
-
-    public RecursoMuseo(Date fecha) {
+    private LocalDateTime fecha;
+    
+    public RecursoMuseo(LocalDateTime fecha){
         this.setFecha(fecha);
     }
-
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 

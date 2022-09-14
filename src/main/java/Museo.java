@@ -1,27 +1,29 @@
-import java.sql.Date;
+import java.time.LocalDateTime;
 public class Museo extends RecursoMuseo {
-    private Buque buque;
-    private Soldado soldado;
     private Tanque tanque;
+    private Soldado soldado;
+    private Buque buque;
 
-
-
-    
-    public Museo(Buque buque, Date fecha) {
-        super(fecha);
-        this.setBuque(buque);
-    }
-    public Museo(Soldado soldado, Date fecha) {
-        super(fecha);
-        this.setSoldado(soldado);
-    }
-    public Museo(Tanque tanque, Date fecha){
+    public Museo(Tanque tanque, LocalDateTime fecha){
         super(fecha);
         this.setTanque(tanque);
     }
+    public Museo(Soldado soldado, LocalDateTime fecha){
+        super(fecha);
+        this.setSoldado(soldado);
+    }
+    public Museo(Buque buque, LocalDateTime fecha){
+        super(fecha);
+        this.setBuque(buque);
+    }
 
-
-
+    
+    public void setTanque(Tanque tanque) {
+        this.tanque = tanque;
+    }
+    public Tanque getTanque() {
+        return tanque;
+    }
     public void setBuque(Buque buque) {
         this.buque = buque;
     }
@@ -34,10 +36,5 @@ public class Museo extends RecursoMuseo {
     public Soldado getSoldado() {
         return soldado;
     }
-    public void setTanque(Tanque tanque) {
-        this.tanque = tanque;
-    }
-    public Tanque getTanque() {
-        return tanque;
-    }
+
 }

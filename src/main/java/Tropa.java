@@ -34,18 +34,30 @@ public class Tropa {
             if (escudo != null) {
                 vidaQuitada = escudo.defensaXdano(damage);
                 enemigo.setVida(enemigo.getVida() - vidaQuitada);
+                if (enemigo.getVida() < 0) {
+                    enemigo.setVida(0.0f);
+
+                }
             }
             else {
                 // transformar el daño a float
                 vidaQuitada = damage;
                 
                 enemigo.setVida(enemigo.getVida() - vidaQuitada);
+                if (enemigo.getVida() < 0) {
+                    enemigo.setVida(0.0f);
+                }
             }
             
             System.out.println(this.getNombre() + " ataco a " + enemigo.getNombre() + " y le quito " + vidaQuitada + " de vida. \nLa vida de " + enemigo.getNombre() + " es " + enemigo.getVida());
         }
         else{
-            System.out.println(this.getNombre() + " no puede atacar a "+ enemigo.getNombre() + " porque esta muerto");
+            if (enemigo.verificarVida() == false){
+                System.out.println(this.getNombre() + " no puede atacar a "+ enemigo.getNombre() + " porque esta muerto");
+            }
+            if (this.verificarVida() == false){
+                System.out.println(this.getNombre() + " no puede atacar porque esta muerto");
+            }
         }
         
 }
@@ -53,6 +65,7 @@ public class Tropa {
     public boolean verificarVida(){
         if(this.getVida() <= 0){
             System.out.println("La tropa " + this.getNombre() + " ha muerto");
+            
             return false;
         }
         else{

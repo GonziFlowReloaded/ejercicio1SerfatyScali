@@ -1,3 +1,7 @@
+import java.security.cert.TrustAnchor;
+import java.sql.Array;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -109,6 +113,48 @@ public class AppTest
 
         soldado1.atacar(soldado2, null, soldado1.danioDistancia());
         assertEquals(0.9f, soldado2.getVida(), 0.0f);
+        
+    }
+
+    @Test
+    public void meterCosasMuseo(){
+        Museo[] museoarr = new Museo[900];
+        Tanque[] tanquearr = new Tanque[300];
+        Soldado[] soldadoarr = new Soldado[300];
+        Buque[] buquearr = new Buque[300];
+        Soldado soldado = new Soldado("Stan", 1.5f, 100f);
+        Soldado chucknorris = new Soldado("Chuck Norris", 30000000.5f, 100f);
+        boolean prueba = true;
+        for (int i = 0; i < 300; i++) {
+            soldadoarr[i] = new Soldado("Stan", 1.5f, 100f);
+            tanquearr[i] = new Tanque("Tanque", 1.5f, 100f, soldado);
+            buquearr[i] = new Buque("Buque", 1.5f, 100f, soldado);
+        }
+        for (int i =  0; i < 300; i++){
+            chucknorris.atacar(soldadoarr[i], null, chucknorris.danioDistancia());
+            chucknorris.atacar(tanquearr[i], null, chucknorris.danioDistancia());
+            chucknorris.atacar(buquearr[i], null, chucknorris.danioDistancia());
+        }
+        for (int i = 0; i < 300; i++) {
+            if (soldadoarr[i].verificarVida() == false){
+                museoarr[i] = new Museo(soldadoarr[i], LocalDateTime.now());
+            }
+            if (tanquearr[i].verificarVida() == false){
+                museoarr[i+300] = new Museo(tanquearr[i], LocalDateTime.now());
+            }
+            if (buquearr[i].verificarVida() == false){
+                museoarr[i+600] = new Museo(buquearr[i], LocalDateTime.now());
+            }
+        }
+        for (int i = 0; i < 900; i++){
+            if (museoarr[i] != null){
+                prueba = true;
+            }
+            else{
+                prueba = false;
+            }
+            assertEquals(true, true);
+        }
         
     }
 }
