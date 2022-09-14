@@ -1,9 +1,7 @@
-import Isepuedeimprimir.IsepuedeImprimir;
-
 public class Imprimeinador {
     
-    public String printearTexto(IsepuedeImprimir objetoquesepuedeimprimir){
-        return objetoquesepuedeimprimir.imprimir();
+    public void printearTexto(String texto){
+        System.out.println(texto);
     }
 
 }
