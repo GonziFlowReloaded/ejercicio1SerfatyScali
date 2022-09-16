@@ -1,8 +1,4 @@
-import java.security.cert.TrustAnchor;
-import java.sql.Array;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,11 +13,16 @@ public class AppTest
      * Rigorous Test :-)
      */
     @Test
+    public void debe_crear_un_soldado(){
+        Soldado soldado = new Soldado("Stan", 1.5f, 100f);
+        assertEquals("[Soldado] Nombre: Stan Vida: 100.0 Daño: 1.5 ", soldado.imprimir());
+    }
+
+    @Test
     public void debe_crear_un_tanque() {
        
 
         Soldado soldado = new Soldado("Stan", 1.5f, 100f);
-        
         Tanque tanque = new Tanque("Tanque", 1.5f, 100f, soldado);
 
         tanque.imprimir();
@@ -49,9 +50,38 @@ public class AppTest
         assertEquals("[Buque] Nombre: Buque Vida: 100.0 Daño: 1.5 [Conductor]:[Soldado] Nombre: Stan Vida: 100.0 Daño: 1.5 ", buque.imprimir());
         
     }
+    
+    @Test
+    public void soldado_debe_disparar(){
+        Soldado soldado0 = new Soldado("Stan", 1.5f, 100f);
+        Soldado soldado1 = new Soldado("Stan pero es un gemelo malvado", 1.5f, 1f);
+        Escudo escudo0 = new Escudo();
+        escudo0.setDefensa0();
+        Ametralladora armaRango = new Ametralladora("AK-47", 1.25f, 3);
+        soldado0.setArmaRango(armaRango);
+        soldado0.atacar(soldado1, escudo0, soldado0.danioDistancia());
+        assertEquals(0.0f, soldado1.getVida(), 0.0f);
+    }
 
     @Test
-    public void debe_crear_un_soldado() {
+    public void tanque_debe_disparar(){
+        
+        Soldado soldado = new Soldado("Stan", 1.5f, 1f);
+        Tanque tanque = new Tanque("Tanque", 2f, 2f, soldado);
+
+        Soldado soldado1 = new Soldado("Jose", 1.5f, 1f);
+        Tanque tanque1 = new Tanque("Tanque de jose",2f, 2f, soldado1);
+        Escudo escudo1 = new Escudo();
+        escudo1.setDefensa1();
+
+
+        tanque.atacar(tanque1, escudo1, tanque.getDaño());
+        assertEquals(1.0f, soldado1.getVida(), 0.0f);
+    }
+
+
+    @Test
+    public void debe_crear_un_soldado_old() {
         /* 
         Tropa soldado1 = new Tropa("soldado1", 1, 1.0f);
         assertNotNull(soldado1);
@@ -106,7 +136,6 @@ public class AppTest
         tanque2.atacar(soldado1, escudoT2);*/
     }
 
-
     @Test
     public void ataqueSinArmas(){
         Soldado soldado1 = new Soldado("Guillermo", 1.0f, 1.0f);
@@ -125,11 +154,10 @@ public class AppTest
         Buque[] buquearr = new Buque[300];
         Soldado soldado = new Soldado("Stan", 1.5f, 100f);
         Soldado chucknorris = new Soldado("Chuck Norris", 30000000.5f, 100f);
-        boolean prueba = true;
         for (int i = 0; i < 300; i++) {
-            soldadoarr[i] = new Soldado("Stan", 1.5f, 100f);
-            tanquearr[i] = new Tanque("Tanque", 1.5f, 100f, soldado);
-            buquearr[i] = new Buque("Buque", 1.5f, 100f, soldado);
+            soldadoarr[i] = new Soldado("Stan", 1.5f, 10f);
+            tanquearr[i] = new Tanque("Tanque", 1.5f, 10f, soldado);
+            buquearr[i] = new Buque("Buque", 1.5f, 10f, soldado);
         }
         for (int i =  0; i < 300; i++){
             chucknorris.atacar(soldadoarr[i], null, chucknorris.danioDistancia());
@@ -141,7 +169,11 @@ public class AppTest
             chucknorris.atacar(buquearr[i], null, chucknorris.danioDistancia());
             RecursoMuseo muereBuque = new RecursoMuseo(buquearr[i], LocalDate.now());
             assertEquals(true, museo.agregarRecurso(muereBuque));
-
         }
+        for (int i= 0; i<900; i++)
+        {
+            museo.getRecursos().get(i).textoMuseo();
+        }
+        assertEquals(900, museo.getRecursos().size());
     }
 }

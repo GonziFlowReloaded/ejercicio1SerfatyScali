@@ -5,6 +5,9 @@ public class Museo{
     ArrayList<RecursoMuseo> recursos = new ArrayList<RecursoMuseo>();
     public RecursoMuseo recursoMuseo;
     
+   public ArrayList<RecursoMuseo> getRecursos() {
+    return recursos;
+   } 
 
     public Museo(){
 
