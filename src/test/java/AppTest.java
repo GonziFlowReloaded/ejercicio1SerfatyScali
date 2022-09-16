@@ -154,6 +154,7 @@ public class AppTest
         Buque[] buquearr = new Buque[300];
         Soldado soldado = new Soldado("Stan", 1.5f, 100f);
         Soldado chucknorris = new Soldado("Chuck Norris", 30000000.5f, 100f);
+
         for (int i = 0; i < 300; i++) {
             soldadoarr[i] = new Soldado("Stan", 1.5f, 10f);
             tanquearr[i] = new Tanque("Tanque", 1.5f, 10f, soldado);
@@ -172,7 +173,7 @@ public class AppTest
         }
         for (int i= 0; i<900; i++)
         {
-            museo.getRecursos().get(i).textoMuseo();
+            System.out.println(museo.getRecursos().get(i).textoMuseo());
         }
         assertEquals(900, museo.getRecursos().size());
     }
