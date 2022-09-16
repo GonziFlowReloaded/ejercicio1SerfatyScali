@@ -1,5 +1,6 @@
 import java.security.cert.TrustAnchor;
 import java.sql.Array;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -118,7 +119,7 @@ public class AppTest
 
     @Test
     public void meterCosasMuseo(){
-        Museo[] museoarr = new Museo[900];
+        Museo museo = new Museo();
         Tanque[] tanquearr = new Tanque[300];
         Soldado[] soldadoarr = new Soldado[300];
         Buque[] buquearr = new Buque[300];
@@ -132,29 +133,15 @@ public class AppTest
         }
         for (int i =  0; i < 300; i++){
             chucknorris.atacar(soldadoarr[i], null, chucknorris.danioDistancia());
+            RecursoMuseo muereStan = new RecursoMuseo(soldadoarr[i], LocalDate.now());
+            assertEquals(true, museo.agregarRecurso(muereStan));
             chucknorris.atacar(tanquearr[i], null, chucknorris.danioDistancia());
+            RecursoMuseo muereTanque = new RecursoMuseo(tanquearr[i], LocalDate.now());
+            assertEquals(true, museo.agregarRecurso(muereTanque));
             chucknorris.atacar(buquearr[i], null, chucknorris.danioDistancia());
+            RecursoMuseo muereBuque = new RecursoMuseo(buquearr[i], LocalDate.now());
+            assertEquals(true, museo.agregarRecurso(muereBuque));
+
         }
-        for (int i = 0; i < 300; i++) {
-            if (soldadoarr[i].verificarVida() == false){
-                museoarr[i] = new Museo(soldadoarr[i], LocalDateTime.now());
-            }
-            if (tanquearr[i].verificarVida() == false){
-                museoarr[i+300] = new Museo(tanquearr[i], LocalDateTime.now());
-            }
-            if (buquearr[i].verificarVida() == false){
-                museoarr[i+600] = new Museo(buquearr[i], LocalDateTime.now());
-            }
-        }
-        for (int i = 0; i < 900; i++){
-            if (museoarr[i] != null){
-                prueba = true;
-            }
-            else{
-                prueba = false;
-            }
-            assertEquals(true, true);
-        }
-        
     }
 }
