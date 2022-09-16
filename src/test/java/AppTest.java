@@ -146,13 +146,31 @@ public class AppTest
         
     }
 
+
+    @Test
+    public void buque_debe_disparar(){
+        Soldado soldado = new Soldado("Stan", 1.5f, 1f);
+        Buque buque = new Buque("Buque", 3f, 3f, soldado);
+
+        Soldado soldado1 = new Soldado("Stan", 1.5f, 1f);
+        Buque buque1 = new Buque("Buque", 3f, 3f, soldado1);
+
+        Escudo escudo2 = new Escudo();
+        escudo2.setDefensa2();
+
+
+        buque.atacar(buque1, escudo2, buque.getDaño());
+        assertEquals(1.3499999f, buque1.getVida(), 0.0f);
+    }
+
+
     @Test
     public void meterCosasMuseo(){
         Museo museo = new Museo();
         Tanque[] tanquearr = new Tanque[300];
         Soldado[] soldadoarr = new Soldado[300];
         Buque[] buquearr = new Buque[300];
-        Soldado soldado = new Soldado("Stan", 1.5f, 100f);
+        Soldado soldado = new Soldado("Stan", 1.5f, 10f);
         Soldado chucknorris = new Soldado("Chuck Norris", 30000000.5f, 100f);
 
         for (int i = 0; i < 300; i++) {
@@ -171,10 +189,15 @@ public class AppTest
             RecursoMuseo muereBuque = new RecursoMuseo(buquearr[i], LocalDate.now());
             assertEquals(true, museo.agregarRecurso(muereBuque));
         }
-        for (int i= 0; i<900; i++)
-        {
-            System.out.println(museo.getRecursos().get(i).textoMuseo());
+        for (int i= 0; i<300; i++){
+
+            assertEquals("[RecursoMuseo]:Fecha de muerte: 2022-09-16 Tropa: [Soldado] Nombre: Stan Vida: 0.0 Daño: 1.5 ", museo.getRecursos().get((i)*3).textoMuseo());
+            assertEquals("[RecursoMuseo]:Fecha de muerte: 2022-09-16 Tropa: [Tanque] Nombre: Tanque Vida: 0.0 Daño: 1.5 [Conductor]:[Soldado] Nombre: Stan Vida: 10.0 Daño: 1.5 ", museo.getRecursos().get((i)*3+1).textoMuseo());
+            assertEquals("[RecursoMuseo]:Fecha de muerte: 2022-09-16 Tropa: [Buque] Nombre: Buque Vida: 0.0 Daño: 1.5 [Conductor]:[Soldado] Nombre: Stan Vida: 10.0 Daño: 1.5 ", museo.getRecursos().get((i)*3+2).textoMuseo());
         }
         assertEquals(900, museo.getRecursos().size());
+        //Sort de recursos
+        
+
     }
 }
